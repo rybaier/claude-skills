@@ -32,7 +32,7 @@ Periodic health check on your working memory. Run it when you want to see what C
 ### Nudging (built into CLAUDE.md)
 Both skills work best when used regularly. The included CLAUDE.md snippet tells Claude to:
 - Suggest `/remember` at the end of sessions where corrections were made or new patterns emerged
-- Suggest `/review` when memory files haven't been reviewed in 2+ weeks
+- Suggest `/review` when memory files haven't been reviewed in 7+ days
 - Never run either silently — always ask first
 
 ## Install
@@ -56,15 +56,15 @@ commands/remember.md  →  /remember
 commands/review.md    →  /review
 ```
 
-## Setup: CLAUDE.md snippet
+## Setup: CLAUDE.md
 
-After running `install.sh`, add the working memory directives to your `~/.claude/CLAUDE.md` so Claude knows to read your memory files and nudge you to use `/remember` and `/review`. A ready-to-paste snippet is included:
+The install script will ask if you want to add working memory directives to your `~/.claude/CLAUDE.md`. This is what tells Claude to actually read your memory files on session start and nudge you to run `/remember` and `/review` at the right times. Without it, the commands work but Claude won't proactively use the memory system.
+
+If you skip it during install, you can always add it later manually:
 
 ```bash
 cat claude-md-snippet.md >> ~/.claude/CLAUDE.md
 ```
-
-Or open `claude-md-snippet.md` and copy the sections you want. This is what tells Claude to actually use the memory system — without it, the commands work but Claude won't proactively read your memory or suggest running them.
 
 ## How it works
 
