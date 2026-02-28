@@ -1,6 +1,10 @@
 # claude-skills
 
-Personal collection of custom Claude Code slash commands for building a persistent working relationship with Claude.
+Custom Claude Code slash commands that teach Claude how *you* personally work.
+
+Everything here is local to your machine. These skills build a persistent profile of your individual development style — how you plan, how you commit, what mistakes to avoid, how you prefer to collaborate. Claude loads this profile at the start of every session, so over time it stops feeling like a generic tool and starts working like a partner that knows your preferences.
+
+Two developers using the same skills will end up with completely different memory files, because the whole point is learning what's specific to each person.
 
 ## What's in here
 
@@ -76,4 +80,4 @@ commands/review.md    →  /review
 
 Claude Code loads any `.md` file in `~/.claude/commands/` as a custom slash command. The file contents become the prompt Claude follows when you invoke it. That's it — no plugins, no config, just markdown.
 
-Working memory lives in `~/.claude/working-memory/` as plain markdown files that get injected into Claude's system prompt. Everything is local to your machine.
+Working memory lives in `~/.claude/working-memory/` as plain markdown files that get injected into Claude's system prompt. Everything stays on your machine — nothing is sent to a server, nothing trains a model. It's just local markdown files that shape how Claude works with you.
