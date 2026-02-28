@@ -4,7 +4,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 
-echo "Updating claude-skills..."
+echo "Updating claude-imprint..."
 echo ""
 
 # Pull latest

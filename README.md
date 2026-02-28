@@ -1,10 +1,10 @@
-# claude-skills
+# claude-imprint
 
-Custom Claude Code slash commands that teach Claude how *you* personally work.
+Claude Code commands that let Claude imprint on *your* development style.
 
-Everything here is local to your machine. These skills build a persistent profile of your individual development style — how you plan, how you commit, what mistakes to avoid, how you prefer to collaborate. Claude loads this profile at the start of every session, so over time it stops feeling like a generic tool and starts working like a partner that knows your preferences.
+Like imprinting in the animal world — where a newborn learns from its parent — Claude learns from you. Your corrections, your preferences, your patterns. Everything is local to your machine. Over time, Claude stops feeling like a generic tool and starts working like a partner that knows how you think.
 
-Two developers using the same skills will end up with completely different memory files, because the whole point is learning what's specific to each person.
+Two developers using the same commands will end up with completely different memory files, because the whole point is learning what's specific to each person.
 
 ## What's in here
 
@@ -42,8 +42,8 @@ Both skills work best when used regularly. The included CLAUDE.md snippet tells 
 ## Install (first time)
 
 ```bash
-git clone git@github.com:rybaier/claude-skills.git ~/dev/claude-skills
-cd ~/dev/claude-skills
+git clone git@github.com:rybaier/claude-imprint.git ~/dev/claude-imprint
+cd ~/dev/claude-imprint
 ./install.sh
 ```
 
@@ -57,7 +57,7 @@ This does three things:
 When new skills are added to the repo:
 
 ```bash
-cd ~/dev/claude-skills
+cd ~/dev/claude-imprint
 ./update.sh
 ```
 

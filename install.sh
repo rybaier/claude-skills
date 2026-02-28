@@ -4,7 +4,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 
-echo "Installing claude-skills..."
+echo "Installing claude-imprint..."
 
 # Install commands (symlink so git pull = instant updates)
 mkdir -p "$CLAUDE_DIR/commands"
