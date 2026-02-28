@@ -35,35 +35,41 @@ Both skills work best when used regularly. The included CLAUDE.md snippet tells 
 - Suggest `/review` when memory files haven't been reviewed in 7+ days
 - Never run either silently — always ask first
 
-## Install
+## Install (first time)
 
 ```bash
 git clone git@github.com:rybaier/claude-skills.git ~/dev/claude-skills
 cd ~/dev/claude-skills
-chmod +x install.sh
 ./install.sh
 ```
 
-Commands are **symlinked** so `git pull` gives you new skills instantly.
-Working memory templates are **copied** so your personal data is never overwritten.
+This does three things:
+1. **Symlinks commands** into `~/.claude/commands/` so they're available as slash commands
+2. **Copies working memory templates** into `~/.claude/working-memory/` (your personal data, never overwritten)
+3. **Asks to append CLAUDE.md snippet** that wires up memory reading and session nudging
 
-## Adding new skills
+## Update (getting new skills)
 
-Drop a `.md` file in `commands/` and re-run `install.sh`. The file name becomes the slash command:
+When new skills are added to the repo:
+
+```bash
+cd ~/dev/claude-skills
+./update.sh
+```
+
+This is safe to run anytime. It will:
+- Pull the latest from the repo
+- Link any **new** commands that don't exist yet
+- **Never** touch your working memory files
+- **Never** touch your CLAUDE.md
+
+## Adding your own skills
+
+Drop a `.md` file in `commands/` and re-run `./update.sh`. The file name becomes the slash command:
 
 ```
 commands/remember.md  →  /remember
 commands/review.md    →  /review
-```
-
-## Setup: CLAUDE.md
-
-The install script will ask if you want to add working memory directives to your `~/.claude/CLAUDE.md`. This is what tells Claude to actually read your memory files on session start and nudge you to run `/remember` and `/review` at the right times. Without it, the commands work but Claude won't proactively use the memory system.
-
-If you skip it during install, you can always add it later manually:
-
-```bash
-cat claude-md-snippet.md >> ~/.claude/CLAUDE.md
 ```
 
 ## How it works
