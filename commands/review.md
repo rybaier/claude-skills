@@ -12,7 +12,7 @@ Review working memory files and provide a health check on the accumulated learni
    learned about how you work." This should feel like a useful mirror, not a recitation.
 
 3. **Check freshness**: Look at the `<!-- last-reviewed: YYYY-MM-DD -->` comment at the
-   top of each file. Flag any file not reviewed in 14+ days.
+   top of each file. Flag any file not reviewed in 7+ days.
 
 4. **Detect issues** across all files:
    - **Stale entries**: Patterns that haven't been reinforced recently or that contradict

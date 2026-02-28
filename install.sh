@@ -30,6 +30,24 @@ for tpl in "$SCRIPT_DIR/working-memory/templates/"*.md; do
   fi
 done
 
+# Install CLAUDE.md snippet (ask first, append if approved)
+SNIPPET="$SCRIPT_DIR/claude-md-snippet.md"
+CLAUDE_MD="$CLAUDE_DIR/CLAUDE.md"
+if [ -f "$CLAUDE_MD" ] && grep -q "Session Nudging" "$CLAUDE_MD" 2>/dev/null; then
+  echo "  Skipping CLAUDE.md snippet (already installed)"
+else
+  echo ""
+  read -p "Add working memory directives to ~/.claude/CLAUDE.md? (y/n) " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "" >> "$CLAUDE_MD"
+    cat "$SNIPPET" >> "$CLAUDE_MD"
+    echo "  Added working memory snippet to CLAUDE.md"
+  else
+    echo "  Skipped. You can add it manually later: cat claude-md-snippet.md >> ~/.claude/CLAUDE.md"
+  fi
+fi
+
 echo ""
 echo "Done! Available commands:"
 for cmd in "$CLAUDE_DIR/commands/"*.md; do
@@ -38,3 +56,4 @@ done
 echo ""
 echo "Working memory files are in ~/.claude/working-memory/"
 echo "Run /remember at the end of sessions to build up your profile."
+echo "Run /review periodically to keep your memory fresh and accurate."

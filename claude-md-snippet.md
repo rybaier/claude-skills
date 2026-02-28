@@ -34,7 +34,7 @@ suggest `/remember` or `/review`:
 - A mistake was made that should be avoided in the future
 
 **Suggest `/review`** when:
-- Any working memory file has a `<!-- last-reviewed: -->` date older than 14 days
+- Any working memory file has a `<!-- last-reviewed: -->` date older than 7 days
 - There have been 5+ `/remember` runs since the last `/review`
 - The user asks about what Claude has learned or how memory works
 
