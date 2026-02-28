@@ -22,7 +22,7 @@ Over time, Claude stops repeating the same mistakes and starts matching how *you
 - Project-specific details (endpoints, secrets, architecture)
 - Anything non-transferable across projects
 
-### `/review`
+### `/reflect`
 Periodic health check on your working memory. Run it when you want to see what Claude has learned, or let Claude suggest it when your memory files are getting stale.
 
 **What it does:**
@@ -36,7 +36,7 @@ Periodic health check on your working memory. Run it when you want to see what C
 ### Nudging (built into CLAUDE.md)
 Both skills work best when used regularly. The included CLAUDE.md snippet tells Claude to:
 - Suggest `/remember` at the end of sessions where corrections were made or new patterns emerged
-- Suggest `/review` when memory files haven't been reviewed in 7+ days
+- Suggest `/reflect` when memory files haven't been reviewed in 7+ days
 - Never run either silently — always ask first
 
 ## Install (first time)
@@ -73,7 +73,7 @@ Drop a `.md` file in `commands/` and re-run `./update.sh`. The file name becomes
 
 ```
 commands/remember.md  →  /remember
-commands/review.md    →  /review
+commands/reflect.md    →  /reflect
 ```
 
 ## How it works

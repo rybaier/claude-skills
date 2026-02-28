@@ -25,7 +25,7 @@ Updates go to the appropriate file:
 
 ### Session Nudging
 At the end of meaningful sessions (not quick one-off questions), evaluate whether to
-suggest `/remember` or `/review`:
+suggest `/remember` or `/reflect`:
 
 **Suggest `/remember`** when any of these occurred during the session:
 - A correction to an assumption or approach
@@ -33,9 +33,9 @@ suggest `/remember` or `/review`:
 - A collaboration pattern proved effective or ineffective
 - A mistake was made that should be avoided in the future
 
-**Suggest `/review`** when:
+**Suggest `/reflect`** when:
 - Any working memory file has a `<!-- last-reviewed: -->` date older than 7 days
-- There have been 5+ `/remember` runs since the last `/review`
+- There have been 5+ `/remember` runs since the last `/reflect`
 - The user asks about what Claude has learned or how memory works
 
 Never run either skill silently. Always ask first.
