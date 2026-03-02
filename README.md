@@ -33,11 +33,27 @@ Periodic health check on your working memory. Run it when you want to see what C
 - Reviews the current session for mistakes Claude made despite having a memory about it — and proposes sharper rewrites
 - Tracks freshness so your memory evolves instead of accumulating dead weight
 
+### `/distill`
+
+Cross-references working memory across all your machines. If you use Claude Code on a laptop and a desktop, each builds its own memory independently. Distill finds the patterns that show up everywhere and promotes them to a shared universal set.
+
+**What it does:**
+- Snapshots your current machine's working memory to a private sync repo
+- Pulls snapshots from all other machines
+- Identifies universal patterns (present on 2+ machines), machine-specific patterns, and contradictions
+- Promotes universals on your approval
+- Seeds new machines with your evolved universal patterns
+
+**First run:** Creates a private `imprinted-memories` repo via `gh` CLI. After that, it's a single command.
+
+**Requires:** `gh` CLI authenticated with GitHub.
+
 ### Nudging (built into CLAUDE.md)
-Both skills work best when used regularly. The included CLAUDE.md snippet tells Claude to:
+All three skills work best when used regularly. The included CLAUDE.md snippet tells Claude to:
 - Suggest `/remember` at the end of sessions where corrections were made or new patterns emerged
 - Suggest `/reflect` when memory files haven't been reviewed in 7+ days
-- Never run either silently — always ask first
+- Suggest `/distill` when working on a new machine or 30+ days since last sync
+- Never run any silently — always ask first
 
 ## Install (first time)
 
@@ -47,10 +63,11 @@ cd ~/dev/claude-imprint
 ./install.sh
 ```
 
-This does three things:
+This does four things:
 1. **Symlinks commands** into `~/.claude/commands/` so they're available as slash commands
 2. **Copies working memory templates** into `~/.claude/working-memory/` (your personal data, never overwritten)
-3. **Asks to append CLAUDE.md snippet** that wires up memory reading and session nudging
+3. **Seeds from universal patterns** if you have an `imprinted-memories` repo from another machine
+4. **Asks to append CLAUDE.md snippet** that wires up memory reading and session nudging
 
 ## Update (getting new skills)
 

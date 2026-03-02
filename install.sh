@@ -30,6 +30,28 @@ for tpl in "$SCRIPT_DIR/working-memory/templates/"*.md; do
   fi
 done
 
+# Seed from universal patterns if imprinted-memories exists
+if [ -d "$HOME/.claude/imprinted-memories/universal" ]; then
+  echo ""
+  echo "Found universal memory patterns from other machines."
+  read -p "Seed working memory from universal patterns? (y/n) " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    for ufile in "$HOME/.claude/imprinted-memories/universal/"*.md; do
+      [ -f "$ufile" ] || continue
+      name="$(basename "$ufile")"
+      if [ -e "$CLAUDE_DIR/working-memory/$name" ]; then
+        echo "  Note: working-memory/$name already exists — run /distill to merge"
+      else
+        cp "$ufile" "$CLAUDE_DIR/working-memory/$name"
+        echo "  Seeded working-memory/$name from universal patterns"
+      fi
+    done
+  else
+    echo "  Skipped. Run /distill later to merge universal patterns."
+  fi
+fi
+
 # Install CLAUDE.md snippet (ask first, append if approved)
 SNIPPET="$SCRIPT_DIR/claude-md-snippet.md"
 CLAUDE_MD="$CLAUDE_DIR/CLAUDE.md"
@@ -56,4 +78,5 @@ done
 echo ""
 echo "Working memory files are in ~/.claude/working-memory/"
 echo "Run /remember at the end of sessions to build up your profile."
-echo "Run /review periodically to keep your memory fresh and accurate."
+echo "Run /reflect periodically to keep your memory fresh and accurate."
+echo "Run /distill to sync working memory across machines."

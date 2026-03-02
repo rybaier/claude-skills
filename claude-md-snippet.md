@@ -38,7 +38,13 @@ suggest `/remember` or `/reflect`:
 - There have been 5+ `/remember` runs since the last `/reflect`
 - The user asks about what Claude has learned or how memory works
 
-Never run either skill silently. Always ask first.
+**Suggest `/distill`** when:
+- The user mentions working on another machine or syncing preferences
+- claude-imprint is freshly installed on a new machine
+- It has been 30+ days since the last distill (check `~/.claude/imprinted-memories/machines/{hostname}/.snapshot-date`)
+- The user asks about differences between how Claude works on different machines
+
+Never run any skill silently. Always ask first.
 
 ### Separation Rules
 - Working memory captures HOW you work — patterns, preferences, style
