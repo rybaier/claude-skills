@@ -4,45 +4,31 @@ Claude Code commands that let Claude imprint on *your* development style.
 
 Like imprinting in the animal world — where a newborn learns from its parent — Claude learns from you. Your corrections, your preferences, your patterns. Everything is local to your machine. Over time, Claude stops feeling like a generic tool and starts working like a partner that knows how you think.
 
-Two developers using the same commands will end up with completely different memory files, because the whole point is learning what's specific to each person.
+Every Claude Code session starts from scratch. No matter how many times you correct the same behavior, the next session doesn't know about it. You can hardcode rules into CLAUDE.md, but that requires you to notice your own patterns, articulate them precisely, and maintain them as they evolve. Most of what makes someone effective with Claude isn't a rule you'd think to write down — it's the accumulation of small corrections and preferences over dozens of sessions.
 
-## What's in here
+claude-imprint flips that. Instead of you writing the rules, Claude observes how you work and proposes the entries. Your memory evolves through use rather than upfront authoring, and gets maintained automatically instead of going stale.
+
+Two developers using the same commands end up with completely different memory files, because the whole point is learning what's specific to each person.
+
+## Commands
 
 ### `/remember`
-Run this at the end of a session (or anytime). Claude reflects on the conversation and identifies learnings worth saving — your working style, collaboration patterns, mistakes to avoid. These get written to local markdown files that load into Claude's system prompt next session.
 
-Over time, Claude stops repeating the same mistakes and starts matching how *you* specifically work. Every developer's memory ends up completely different.
+Run this at the end of a session (or anytime). Claude reviews what happened — corrections you made, preferences you expressed, patterns that emerged — and proposes entries for the right memory file. It filters out anything project-specific and only keeps transferable patterns. You approve before anything gets written.
 
-**What it captures (examples):**
-- Collaboration patterns: "Present options with trade-offs rather than picking silently"
-- Mistakes to avoid: "Always grep for the OLD pattern after bulk replacement to verify nothing was missed"
-- Execution style: "Phase-by-phase commits at each boundary, never in bulk"
+Over time, Claude stops repeating the same mistakes and starts matching how *you* specifically work:
 
-**What it filters out:**
-- Project-specific details (endpoints, secrets, architecture)
-- Anything non-transferable across projects
+- "Present options with trade-offs rather than picking silently"
+- "Always grep for the OLD pattern after bulk replacement to verify nothing was missed"
+- "Phase-by-phase commits at each boundary, never in bulk"
 
 ### `/reflect`
-Periodic health check on your working memory. Run it when you want to see what Claude has learned, or let Claude suggest it when your memory files are getting stale.
 
-**What it does:**
-- Summarizes what Claude has learned about you as a readable narrative
-- Flags stale, contradictory, or redundant entries and proposes cleanup
-- Identifies vague entries that aren't specific enough to change behavior
-- Checks for patterns repeated across projects that should be promoted to global memory
-- Reviews the current session for mistakes Claude made despite having a memory about it — and proposes sharper rewrites
-- Tracks freshness so your memory evolves instead of accumulating dead weight
+Periodic health check on your working memory. Claude reads everything it's learned about you, summarizes it as a narrative, and audits for problems — stale entries, contradictions, redundancy, entries too vague to actually change behavior. It also checks the current session for mistakes Claude made *despite* having a memory about it, and proposes sharper rewrites.
 
 ### `/distill`
 
-Cross-references working memory across all your machines. If you use Claude Code on a laptop and a desktop, each builds its own memory independently. Distill finds the patterns that show up everywhere and promotes them to a shared universal set.
-
-**What it does:**
-- Snapshots your current machine's working memory to a private sync repo
-- Pulls snapshots from all other machines
-- Identifies universal patterns (present on 2+ machines), machine-specific patterns, and contradictions
-- Promotes universals on your approval
-- Seeds new machines with your evolved universal patterns
+Cross-references working memory across all your machines. If you use Claude Code on a laptop and a desktop, each builds memory independently. Distill snapshots your local memory to a private repo, pulls from your other machines, and finds the patterns that show up everywhere. It promotes universals on your approval and seeds new machines with your evolved patterns.
 
 **First run:** Creates a private `imprinted-memories` repo via `gh` CLI. After that, it's a single command.
 
@@ -90,7 +76,8 @@ Drop a `.md` file in `commands/` and re-run `./update.sh`. The file name becomes
 
 ```
 commands/remember.md  →  /remember
-commands/reflect.md    →  /reflect
+commands/reflect.md   →  /reflect
+commands/distill.md   →  /distill
 ```
 
 ## How it works
