@@ -123,6 +123,14 @@ cd claude-imprint && ./update.sh
 
 This pulls the latest, links any new commands, and **never** touches your working memory files or CLAUDE.md.
 
+## Uninstall
+
+```bash
+cd claude-imprint && ./uninstall.sh
+```
+
+Removes command symlinks, offers to clean the CLAUDE.md snippet, and asks before touching working memory files. Nothing is deleted without confirmation.
+
 ## Adding your own commands
 
 Drop a `.md` file in `commands/` and re-run `./update.sh`. The filename (minus `.md`) becomes the slash command:
@@ -144,6 +152,12 @@ You approve everything before it's written. `/remember` and `/reflect` always pr
 
 **Does this work with Claude on the web?**
 No. claude-imprint requires the Claude Code CLI, which supports custom slash commands and CLAUDE.md injection.
+
+**What Claude plan do I need?**
+Claude Code requires a Pro, Max, or Team plan. claude-imprint works with any of these — it's just markdown files that Claude Code reads.
+
+**How do I uninstall?**
+Run `./uninstall.sh` from the repo directory. It removes command symlinks, offers to clean the CLAUDE.md snippet, and asks before touching your working memory files. Nothing is deleted without confirmation.
 
 ## License
 

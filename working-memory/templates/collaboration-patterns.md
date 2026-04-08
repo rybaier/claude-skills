@@ -2,11 +2,13 @@
 
 Observations about what works and what doesn't in pairing with Claude. Updated via /remember.
 
+<!-- /remember will replace these examples with your actual patterns over time -->
+
 ## What Works
-- (Effective patterns will be captured here by /remember)
+- <!-- e.g., Checkpoint-driven: stop and present findings at key junctures before proceeding -->
 
 ## What Doesn't Work
-- (Anti-patterns will be captured here by /remember)
+- <!-- e.g., Don't summarize what you just did at the end of every response — I can read the diff -->
 
 ## Adjustments Over Time
-- (Chronological log of changes to how we work together)
+- <!-- e.g., 2025-03-15: Switched from detailed explanations to terse diffs-only responses -->

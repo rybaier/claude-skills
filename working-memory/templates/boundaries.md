@@ -7,3 +7,7 @@ Rules about what belongs where — keeping working memory clean and scoped.
 - NEVER store project-specific details (endpoints, secrets, architecture, team info)
 - Project details belong in project-level memories only
 - When unsure whether something is a pattern vs a project detail, ask
+
+<!-- /remember will add your specific boundary rules below over time -->
+<!-- e.g., Work project details stay in work project memories — never mix with personal projects -->
+<!-- e.g., Never store API keys, tokens, or credentials in working memory -->

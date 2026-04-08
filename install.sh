@@ -55,19 +55,28 @@ fi
 # Install CLAUDE.md snippet (ask first, append if approved)
 SNIPPET="$SCRIPT_DIR/claude-md-snippet.md"
 CLAUDE_MD="$CLAUDE_DIR/CLAUDE.md"
-if [ -f "$CLAUDE_MD" ] && grep -q "Session Nudging" "$CLAUDE_MD" 2>/dev/null; then
+if [ -f "$CLAUDE_MD" ] && grep -q "BEGIN claude-imprint" "$CLAUDE_MD" 2>/dev/null; then
   echo "  Skipping CLAUDE.md snippet (already installed)"
 else
   echo ""
   read -p "Add working memory directives to ~/.claude/CLAUDE.md? (y/n) " -n 1 -r
   echo ""
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo "" >> "$CLAUDE_MD"
+    if [ -f "$CLAUDE_MD" ]; then
+      echo "" >> "$CLAUDE_MD"
+    fi
     cat "$SNIPPET" >> "$CLAUDE_MD"
     echo "  Added working memory snippet to CLAUDE.md"
   else
     echo "  Skipped. You can add it manually later: cat claude-md-snippet.md >> ~/.claude/CLAUDE.md"
   fi
+fi
+
+# Check for gh CLI (optional, only needed for /distill)
+if ! command -v gh &>/dev/null; then
+  echo ""
+  echo "  Note: gh CLI not found. Install it (https://cli.github.com/) if you want"
+  echo "  to use /distill for cross-machine memory sync."
 fi
 
 echo ""
