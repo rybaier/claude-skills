@@ -41,10 +41,17 @@ Claude Code loads `.md` files from `~/.claude/commands/` as slash commands, and 
 │   ├── reflect.md       # /reflect command
 │   └── distill.md       # /distill command
 ├── working-memory/
-│   ├── profile.md            # How you work
+│   ├── profile.md               # How you work
 │   ├── collaboration-patterns.md  # How you and Claude work together
-│   └── boundaries.md         # What stays separate
-└── CLAUDE.md                  # Loads working memory + session nudging
+│   ├── boundaries.md            # What stays separate
+│   ├── tools.md                 # Preferred tools and environment
+│   ├── anti-patterns.md         # Mistakes to avoid
+│   ├── team/
+│   │   └── team-patterns.md     # Team conventions (shared)
+│   └── projects/
+│       └── {owner}--{repo}/     # Per-project overlays (created by /remember)
+│           └── patterns.md
+└── CLAUDE.md                    # Loads working memory + session nudging
 ```
 
 **Everything stays local.** Working memory is plain markdown on your machine. Nothing is sent to a server. Nothing trains a model.
@@ -85,9 +92,19 @@ Apply this entry? (y/n)
 
 Periodic health check on your working memory. Claude reads everything it's learned about you, summarizes it as a narrative, and audits for problems — stale entries, contradictions, redundancy, entries too vague to actually change behavior. It proposes sharper rewrites and flags entries that didn't prevent mistakes they should have.
 
+Includes an effectiveness score: for each memory file, `/reflect` checks how many entries Claude followed vs violated in the current session. Entries that keep getting violated across sessions are flagged for rewriting — the current wording isn't working.
+
 ### When you use multiple machines: `/distill`
 
 Cross-references working memory across machines. If you use Claude Code on a laptop and a desktop, each builds memory independently. Distill snapshots your local memory to a private GitHub repo, pulls from your other machines, and promotes patterns that show up everywhere. It seeds new machines with your evolved patterns. Requires [`gh` CLI](https://cli.github.com/) authenticated with GitHub.
+
+### First time? `/teach`
+
+Guided preference questionnaire that walks you through four rounds of questions — planning style, communication preferences, code conventions, and collaboration patterns. Converts your answers into concrete memory entries. You can also skip it and just use `/remember` to build memory organically.
+
+### Session history
+
+Every time `/remember` runs, it also appends a 2-3 line summary to `session-log.md` — a grep-searchable log of past sessions. Over time this becomes a lightweight session history. `/reflect` manages rotation when the log gets large.
 
 ### Nudging
 
@@ -111,7 +128,45 @@ After a few weeks of use, your `profile.md` might contain entries like:
 - Always grep for the OLD pattern after bulk replacement to verify nothing was missed
 ```
 
+And your `anti-patterns.md` might capture lessons learned:
+
+```markdown
+## Recurring Mistakes
+- macOS sed requires -i '' (empty string) — scripts written for GNU sed break silently
+
+## Lessons Learned
+- 2026-03-15: Deployed to prod without running migrations — added pre-deploy checklist
+```
+
 Two developers using the same commands end up with completely different memory files.
+
+## Memory categories
+
+| File | What it captures | Example |
+|------|-----------------|---------|
+| `profile.md` | Working style and preferences | "Phase-by-phase commits" |
+| `collaboration-patterns.md` | How you and Claude work together | "Don't summarize what you just did" |
+| `boundaries.md` | Separation rules and guardrails | "Never store API keys in working memory" |
+| `tools.md` | Tool preferences and environment | "Prefer ripgrep over grep, fd over find" |
+| `anti-patterns.md` | Mistakes and footguns to avoid | "macOS sed requires -i ''" |
+| `team/team-patterns.md` | Team-wide conventions (shared) | "All PRs require one approval" |
+| `projects/{repo}/patterns.md` | Project-specific patterns | "Auth returns 403 for expired tokens" |
+
+## Tracking and metrics
+
+Each memory file includes metadata comments that track effectiveness:
+
+```markdown
+<!-- stats: corrections=12, since=2026-03-01 -->
+<!-- last-reviewed: 2026-04-15 -->
+<!-- last-remember: 2026-04-20 -->
+```
+
+- **corrections**: How many learnings `/remember` has captured in this file
+- **last-reviewed**: When `/reflect` last audited this file
+- **last-remember**: When `/remember` last wrote to this file
+
+`/reflect` uses these to report on memory health and flag files that need attention.
 
 ## Update
 

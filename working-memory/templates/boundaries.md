@@ -1,5 +1,9 @@
 # Boundaries
 
+<!-- stats: corrections=0, since=YYYY-MM-DD -->
+<!-- last-reviewed: YYYY-MM-DD -->
+<!-- last-remember: YYYY-MM-DD -->
+
 Rules about what belongs where — keeping working memory clean and scoped.
 
 ## Separation Rules

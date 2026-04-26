@@ -23,10 +23,18 @@ If `~/.claude/imprinted-memories/` does not exist:
      ```
      Initial commit and push, then continue.
 
+   If scaffolding a new repo and `~/.claude/working-memory/team/` exists, also create
+   a `team/` directory in the repo structure.
+
 ## Process
 
 1. **Snapshot** — Get the machine hostname via `hostname -s`. Copy all files from
    `~/.claude/working-memory/` to `~/.claude/imprinted-memories/machines/{hostname}/`.
+
+1b. **Team snapshot** — If `~/.claude/working-memory/team/` exists with `.md` files,
+    copy its contents to `~/.claude/imprinted-memories/team/`. This is a shared directory
+    (not per-machine), so merge rather than overwrite: only add entries that don't already
+    exist in the repo's team files. Include team changes in the snapshot commit.
    Write a `.snapshot-date` file containing today's date (YYYY-MM-DD).
    Stage, commit with message "snapshot {hostname} YYYY-MM-DD", and push.
 
@@ -42,7 +50,14 @@ If `~/.claude/imprinted-memories/` does not exist:
    - **Contradictions**: same topic, different conclusions across machines
    - **Stale**: snapshot `.snapshot-date` older than 14 days
 
-5. **Check existing universals** — Read `universal/` files. Compare against the analysis:
+5. **Check existing universals and team patterns** — Read `universal/` and `team/` files.
+
+   For team patterns, compare the repo's `team/` files against local `working-memory/team/`:
+   - New entries from other team members to pull into local
+   - Local entries not yet pushed to the repo
+   - Conflicts where the same topic differs
+
+   For universals, compare against the analysis:
    - New promotions: universal patterns not yet in `universal/`
    - Updates needed: universal entries that have evolved on machines
    - Regressions: universals that have been removed or contradicted on machines
@@ -71,7 +86,7 @@ If `~/.claude/imprinted-memories/` does not exist:
 
 8. **Apply** — Write approved changes to `universal/` files. Use the same file and section
    structure as the working memory templates (profile.md, collaboration-patterns.md,
-   boundaries.md). Stage, commit with message "distill: promote universals YYYY-MM-DD",
+   boundaries.md, tools.md, anti-patterns.md). Stage, commit with message "distill: promote universals YYYY-MM-DD",
    and push.
 
 9. **Offer to seed local** — Ask if the user wants to merge any universal patterns that

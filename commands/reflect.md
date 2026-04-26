@@ -6,13 +6,22 @@ Review working memory files and provide a health check on the accumulated learni
    - `~/.claude/working-memory/profile.md`
    - `~/.claude/working-memory/collaboration-patterns.md`
    - `~/.claude/working-memory/boundaries.md`
+   - `~/.claude/working-memory/tools.md` (if it exists)
+   - `~/.claude/working-memory/anti-patterns.md` (if it exists)
+   - `~/.claude/working-memory/team/team-patterns.md` (if it exists)
+   - All `.md` files in `~/.claude/working-memory/projects/{current-project}/` (if in a
+     git repo — detect project using `git remote get-url origin`, sanitize to `{owner}--{repo}`)
 
 2. **Generate a summary** of what Claude has learned about the user. Write this as a
    short narrative (not just repeating the bullets back). Frame it as: "Here's what I've
    learned about how you work." This should feel like a useful mirror, not a recitation.
 
-3. **Check freshness**: Look at the `<!-- last-reviewed: YYYY-MM-DD -->` comment at the
-   top of each file. Flag any file not reviewed in 7+ days.
+3. **Check freshness** using each file's metadata comments:
+   - `<!-- last-reviewed: YYYY-MM-DD -->` — flag if older than 7 days or still a
+     `YYYY-MM-DD` placeholder (meaning never reviewed)
+   - `<!-- last-remember: YYYY-MM-DD -->` — note when the last learning was captured
+   - `<!-- remember-count-since-reflect: N -->` in `~/.claude/CLAUDE.md` — flag if N >= 5
+     (meaning 5+ /remember runs since last /reflect)
 
 4. **Detect issues** across all files:
    - **Stale entries**: Patterns that haven't been reinforced recently or that contradict
@@ -24,14 +33,56 @@ Review working memory files and provide a health check on the accumulated learni
      propose sharpening or removing
    - **Gaps**: Sections with few or no entries that could benefit from attention
 
-5. **Effectiveness check** (if in an active session with history):
-   Review the current session for moments where Claude repeated a mistake already captured
-   in memory. If found, flag the entry as ineffective and propose a rewrite that would
-   actually prevent the mistake.
+5. **Effectiveness scoring** (if in an active session with history):
 
-6. **Upward extraction check**:
-   Scan project-level memory files (if accessible) for patterns that appear across multiple
-   projects. Suggest promoting these to global working memory.
+   a. **Current session scan**: Review the current session's conversation history.
+      For each entry across all memory files, classify:
+      - **Followed**: Claude's behavior was consistent with the entry
+      - **Violated**: Claude did something the entry should have prevented
+      - **N/A**: Entry wasn't relevant this session
+      Skip files where all entries are N/A.
+
+   b. **Calculate scores**: For each file with relevant entries, compute:
+      `Score = followed / (followed + violated)` as a percentage.
+
+   c. **Violation details**: For each violated entry, explain:
+      - Which entry was violated and in which file
+      - What happened in the session that contradicted it
+      - Why the current wording didn't prevent the mistake
+      - A proposed rewrite that would be more effective
+
+   d. **Longitudinal trend** (if `~/.claude/working-memory/session-log.md` exists
+      with 5+ entries):
+      - Scan session-log.md for past entries that mention corrections
+      - Cross-reference with current memory entries
+      - Flag entries that have been corrected 2+ times in the last 10 sessions —
+        these are candidates for rewriting (the current wording isn't working)
+
+   e. **Effectiveness ratio** (if stats comments exist):
+      Compare correction counts against violations found. If a file has high
+      corrections but entries keep getting violated, note that the file may need
+      a rewrite pass rather than incremental additions. If corrections are low
+      but many sessions have passed, suggest the user may be under-using /remember.
+
+   Present scores in the Health section as a table:
+   | File | Entries | Followed | Violated | N/A | Score |
+   |------|---------|----------|----------|-----|-------|
+
+   Frame violations as questions, not assertions — the user may have intentionally
+   deviated from a pattern: "Did you mean to deviate from X, or should we sharpen
+   the entry?"
+
+6. **Session log maintenance**: If `~/.claude/working-memory/session-log.md` exists,
+   check the `<!-- entry-count: N -->` comment:
+   - If N > 100, propose archiving entries older than 90 days to
+     `~/.claude/working-memory/session-log-archive-{YYYY}.md` (by year of entry date)
+   - If N > 200, flag: "Session log needs immediate trimming — over 200 entries"
+   - Report entry count in the Health section
+
+6b. **Upward extraction check**:
+   Scan project overlay files (in `~/.claude/working-memory/projects/`) for patterns that
+   appear across 2+ projects. Suggest promoting these to global working memory. Also scan
+   project-level Claude memory files (if accessible) for cross-project patterns.
 
 7. **Present findings** in this format:
 
@@ -40,7 +91,12 @@ Review working memory files and provide a health check on the accumulated learni
 
    ### Health
    - **Entries**: X total across Y files
+   - **Corrections captured**: N total (breakdown per file from `<!-- stats: -->` comments)
+   - **Tracking since**: earliest `since` date across files, or "not yet tracked"
    - **Last reviewed**: (date per file, or "never")
+   - **Last remembered**: (date per file from `<!-- last-remember: -->`)
+   - **Remember runs since last reflect**: N (from `<!-- remember-count-since-reflect: -->`)
+   - **Session log entries**: N (from `<!-- entry-count: -->` in session-log.md, or "no log")
    - **Freshness**: (ok / stale / needs attention)
 
    ### Proposed Changes
@@ -54,4 +110,6 @@ Review working memory files and provide a health check on the accumulated learni
 8. **Wait for approval** before making any changes.
 
 9. After approval, apply the changes and update the `<!-- last-reviewed: YYYY-MM-DD -->`
-   comment at the top of each reviewed file.
+   comment at the top of each reviewed file to today's date.
+
+9b. Reset `<!-- remember-count-since-reflect: N -->` to 0 in `~/.claude/CLAUDE.md`.
