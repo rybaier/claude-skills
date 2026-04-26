@@ -91,6 +91,10 @@ Periodic health check on your working memory. Claude reads everything it's learn
 
 Cross-references working memory across machines. If you use Claude Code on a laptop and a desktop, each builds memory independently. Distill snapshots your local memory to a private GitHub repo, pulls from your other machines, and promotes patterns that show up everywhere. It seeds new machines with your evolved patterns. Requires [`gh` CLI](https://cli.github.com/) authenticated with GitHub.
 
+### First time? `/teach`
+
+Guided preference questionnaire that walks you through four rounds of questions — planning style, communication preferences, code conventions, and collaboration patterns. Converts your answers into concrete memory entries. You can also skip it and just use `/remember` to build memory organically.
+
 ### Nudging
 
 The CLAUDE.md snippet tells Claude to suggest the right command at the right time — `/remember` when corrections happen, `/reflect` when memory goes stale, `/distill` on new machines. It never runs anything silently; it always asks first.

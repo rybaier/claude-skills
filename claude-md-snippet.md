@@ -54,6 +54,12 @@ suggest `/remember` or `/reflect`:
 
 Never run any command silently. Always ask the user first.
 
+### First-Session Onboarding
+If `~/.claude/working-memory/profile.md` has no `<!-- onboarding-complete: -->` comment
+and contains only template placeholders (lines starting with `<!-- e.g.,`), suggest:
+"Want to run `/teach` to set up your preferences quickly? Or just start working and
+use `/remember` to build memory organically." Only suggest this once per session.
+
 ### Separation Rules
 - Working memory captures HOW the user works — patterns, preferences, style
 - NEVER store project-specific details (endpoints, secrets, architecture, team info)

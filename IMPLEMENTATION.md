@@ -14,9 +14,9 @@
 - [x] Update README.md — document new files and metrics
 
 ## Phase 2a: /teach Onboarding (F6)
-- [ ] Create commands/teach.md
-- [ ] Update claude-md-snippet.md — first-session detection
-- [ ] Update README.md
+- [x] Create commands/teach.md
+- [x] Update claude-md-snippet.md — first-session detection
+- [x] Update README.md
 
 ## Phase 2b: Team Imprinting (F4)
 - [ ] Create working-memory/templates/team/team-patterns.md
