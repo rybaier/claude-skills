@@ -1,5 +1,9 @@
 # Collaboration Patterns
 
+<!-- stats: corrections=0, since=YYYY-MM-DD -->
+<!-- last-reviewed: YYYY-MM-DD -->
+<!-- last-remember: YYYY-MM-DD -->
+
 Observations about what works and what doesn't in pairing with Claude. Updated via /remember.
 
 <!-- /remember will replace these examples with your actual patterns over time -->

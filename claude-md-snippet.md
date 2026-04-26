@@ -10,6 +10,8 @@ At the start of sessions involving significant work (not quick one-off questions
 - `~/.claude/working-memory/profile.md` — Working style and preferences
 - `~/.claude/working-memory/collaboration-patterns.md` — What works in pairing with this user
 - `~/.claude/working-memory/boundaries.md` — Work vs personal separation rules
+- `~/.claude/working-memory/tools.md` — Preferred tools and environment (if it exists)
+- `~/.claude/working-memory/anti-patterns.md` — Mistakes to avoid (if it exists)
 
 ### Proactive Update Protocol
 When any of the following happen during a session, suggest updating working memory
@@ -20,9 +22,11 @@ When any of the following happen during a session, suggest updating working memo
 - The user explicitly asks to remember something
 
 Updates go to the appropriate file:
-- Style/preference → `profile.md`
-- Collaboration insight → `collaboration-patterns.md`
-- Separation rule → `boundaries.md`
+- Style/preference -> `profile.md`
+- Collaboration insight -> `collaboration-patterns.md`
+- Separation rule -> `boundaries.md`
+- Tool/environment preference -> `tools.md`
+- Mistake/anti-pattern -> `anti-patterns.md`
 
 ### Session Nudging
 At the end of meaningful sessions (not quick one-off questions), evaluate whether to
@@ -33,10 +37,13 @@ suggest `/remember` or `/reflect`:
 - A new workflow preference emerged
 - A collaboration pattern proved effective or ineffective
 - A mistake was made that should be avoided in the future
+- A tool preference or environment detail was established
 
 **Suggest `/reflect`** when:
 - Any working memory file has a `<!-- last-reviewed: -->` date older than 7 days
-- There have been 5+ `/remember` runs since the last `/reflect`
+  (or still a `YYYY-MM-DD` placeholder, meaning it has never been reviewed)
+- The `<!-- remember-count-since-reflect: N -->` comment shows N >= 5
+  (meaning 5+ /remember runs since the last /reflect)
 - The user asks about what Claude has learned or how memory works
 
 **Suggest `/distill`** when:
@@ -52,4 +59,6 @@ Never run any command silently. Always ask the user first.
 - NEVER store project-specific details (endpoints, secrets, architecture, team info)
 - Project details belong in project-level memories only
 - When unsure whether something is a pattern vs a project detail, ask the user
+
+<!-- remember-count-since-reflect: 0 -->
 <!-- END claude-imprint -->

@@ -41,10 +41,12 @@ Claude Code loads `.md` files from `~/.claude/commands/` as slash commands, and 
 │   ├── reflect.md       # /reflect command
 │   └── distill.md       # /distill command
 ├── working-memory/
-│   ├── profile.md            # How you work
+│   ├── profile.md               # How you work
 │   ├── collaboration-patterns.md  # How you and Claude work together
-│   └── boundaries.md         # What stays separate
-└── CLAUDE.md                  # Loads working memory + session nudging
+│   ├── boundaries.md            # What stays separate
+│   ├── tools.md                 # Preferred tools and environment
+│   └── anti-patterns.md         # Mistakes to avoid
+└── CLAUDE.md                    # Loads working memory + session nudging
 ```
 
 **Everything stays local.** Working memory is plain markdown on your machine. Nothing is sent to a server. Nothing trains a model.
@@ -111,7 +113,43 @@ After a few weeks of use, your `profile.md` might contain entries like:
 - Always grep for the OLD pattern after bulk replacement to verify nothing was missed
 ```
 
+And your `anti-patterns.md` might capture lessons learned:
+
+```markdown
+## Recurring Mistakes
+- macOS sed requires -i '' (empty string) — scripts written for GNU sed break silently
+
+## Lessons Learned
+- 2026-03-15: Deployed to prod without running migrations — added pre-deploy checklist
+```
+
 Two developers using the same commands end up with completely different memory files.
+
+## Memory categories
+
+| File | What it captures | Example |
+|------|-----------------|---------|
+| `profile.md` | Working style and preferences | "Phase-by-phase commits" |
+| `collaboration-patterns.md` | How you and Claude work together | "Don't summarize what you just did" |
+| `boundaries.md` | Separation rules and guardrails | "Never store API keys in working memory" |
+| `tools.md` | Tool preferences and environment | "Prefer ripgrep over grep, fd over find" |
+| `anti-patterns.md` | Mistakes and footguns to avoid | "macOS sed requires -i ''" |
+
+## Tracking and metrics
+
+Each memory file includes metadata comments that track effectiveness:
+
+```markdown
+<!-- stats: corrections=12, since=2026-03-01 -->
+<!-- last-reviewed: 2026-04-15 -->
+<!-- last-remember: 2026-04-20 -->
+```
+
+- **corrections**: How many learnings `/remember` has captured in this file
+- **last-reviewed**: When `/reflect` last audited this file
+- **last-remember**: When `/remember` last wrote to this file
+
+`/reflect` uses these to report on memory health and flag files that need attention.
 
 ## Update
 

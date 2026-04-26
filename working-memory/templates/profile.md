@@ -1,5 +1,8 @@
 # Working Style Profile
 
+<!-- stats: corrections=0, since=YYYY-MM-DD -->
+<!-- last-reviewed: YYYY-MM-DD -->
+<!-- last-remember: YYYY-MM-DD -->
 <!-- /remember will replace these examples with your actual patterns over time -->
 
 ## Planning & Direction
