@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 
 echo "Installing claude-imprint..."
+echo ""
 
 # Install commands (symlink so git pull = instant updates)
 mkdir -p "$CLAUDE_DIR/commands"
@@ -31,18 +32,32 @@ for tpl in "$SCRIPT_DIR/working-memory/templates/"*.md; do
   fi
 done
 
-# Set up team memory from templates (copy, not symlink)
-mkdir -p "$CLAUDE_DIR/working-memory/team"
-for tpl in "$SCRIPT_DIR/working-memory/templates/team/"*.md; do
-  [ -f "$tpl" ] || continue
-  name="$(basename "$tpl")"
-  if [ -e "$CLAUDE_DIR/working-memory/team/$name" ]; then
-    echo "  Skipping working-memory/team/$name (already exists)"
-  else
-    cp "$tpl" "$CLAUDE_DIR/working-memory/team/$name"
-    echo "  Created working-memory/team/$name from template"
-  fi
-done
+# Ask about team usage
+echo ""
+echo "claude-imprint supports team-wide convention tracking."
+echo "Team patterns are shared across team members via /distill and"
+echo "capture things like branch naming, PR requirements, and deploy process."
+echo ""
+read -p "Will you be using claude-imprint with a team? (y/n) " -n 1 -r
+echo ""
+
+TEAM_INSTALL=false
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  TEAM_INSTALL=true
+  mkdir -p "$CLAUDE_DIR/working-memory/team"
+  for tpl in "$SCRIPT_DIR/working-memory/templates/team/"*.md; do
+    [ -f "$tpl" ] || continue
+    name="$(basename "$tpl")"
+    if [ -e "$CLAUDE_DIR/working-memory/team/$name" ]; then
+      echo "  Skipping working-memory/team/$name (already exists)"
+    else
+      cp "$tpl" "$CLAUDE_DIR/working-memory/team/$name"
+      echo "  Created working-memory/team/$name from template"
+    fi
+  done
+else
+  echo "  Skipped team setup. Run ./install.sh again if you change your mind."
+fi
 
 # Seed from universal patterns if imprinted-memories exists
 if [ -d "$HOME/.claude/imprinted-memories/universal" ]; then
@@ -66,8 +81,8 @@ if [ -d "$HOME/.claude/imprinted-memories/universal" ]; then
   fi
 fi
 
-# Seed from team patterns if imprinted-memories has them
-if [ -d "$HOME/.claude/imprinted-memories/team" ]; then
+# Seed from team patterns if imprinted-memories has them (only if team install)
+if [ "$TEAM_INSTALL" = true ] && [ -d "$HOME/.claude/imprinted-memories/team" ]; then
   echo ""
   echo "Found team patterns from imprinted-memories."
   read -p "Seed team memory from shared patterns? (y/n) " -n 1 -r
@@ -120,6 +135,13 @@ for cmd in "$CLAUDE_DIR/commands/"*.md; do
 done
 echo ""
 echo "Working memory files are in ~/.claude/working-memory/"
+if [ "$TEAM_INSTALL" = true ]; then
+  echo "Team patterns are in ~/.claude/working-memory/team/"
+fi
+echo ""
 echo "Run /remember at the end of sessions to build up your profile."
 echo "Run /reflect periodically to keep your memory fresh and accurate."
 echo "Run /distill to sync working memory across machines."
+if [ "$TEAM_INSTALL" = true ]; then
+  echo "Run /distill to share team patterns with teammates."
+fi
