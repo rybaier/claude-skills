@@ -38,11 +38,11 @@
 - [x] Update README.md
 
 ## Phase 3a: Session Recall (F7)
-- [ ] Create working-memory/templates/session-log.md
-- [ ] Update commands/remember.md — session log entry
-- [ ] Update commands/reflect.md — session log maintenance
-- [ ] Update claude-md-snippet.md — session log reading
-- [ ] Update README.md
+- [x] Create working-memory/templates/session-log.md
+- [x] Update commands/remember.md — session log entry
+- [x] Update commands/reflect.md — session log maintenance
+- [x] Update claude-md-snippet.md — session log reading
+- [x] Update README.md
 
 ## Phase 3b: Enforcement Scoring (F8)
 - [ ] Update commands/reflect.md — effectiveness scoring system

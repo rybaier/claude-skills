@@ -13,6 +13,7 @@ At the start of sessions involving significant work (not quick one-off questions
 - `~/.claude/working-memory/tools.md` — Preferred tools and environment (if it exists)
 - `~/.claude/working-memory/anti-patterns.md` — Mistakes to avoid (if it exists)
 - `~/.claude/working-memory/team/team-patterns.md` — Team conventions (if it exists)
+- `~/.claude/working-memory/session-log.md` — Recent sessions (skim the last 5-10 entries for context on recent work — do not read the entire file)
 
 ### Project Overlay
 If the current directory is a git repo, check for a project-specific memory overlay:

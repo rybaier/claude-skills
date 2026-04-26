@@ -44,7 +44,14 @@ Review working memory files and provide a health check on the accumulated learni
     file may need a rewrite pass rather than incremental additions. If corrections are
     low but many sessions have passed, suggest the user may be under-using /remember.
 
-6. **Upward extraction check**:
+6. **Session log maintenance**: If `~/.claude/working-memory/session-log.md` exists,
+   check the `<!-- entry-count: N -->` comment:
+   - If N > 100, propose archiving entries older than 90 days to
+     `~/.claude/working-memory/session-log-archive-{YYYY}.md` (by year of entry date)
+   - If N > 200, flag: "Session log needs immediate trimming — over 200 entries"
+   - Report entry count in the Health section
+
+6b. **Upward extraction check**:
    Scan project overlay files (in `~/.claude/working-memory/projects/`) for patterns that
    appear across 2+ projects. Suggest promoting these to global working memory. Also scan
    project-level Claude memory files (if accessible) for cross-project patterns.
@@ -61,6 +68,7 @@ Review working memory files and provide a health check on the accumulated learni
    - **Last reviewed**: (date per file, or "never")
    - **Last remembered**: (date per file from `<!-- last-remember: -->`)
    - **Remember runs since last reflect**: N (from `<!-- remember-count-since-reflect: -->`)
+   - **Session log entries**: N (from `<!-- entry-count: -->` in session-log.md, or "no log")
    - **Freshness**: (ok / stale / needs attention)
 
    ### Proposed Changes

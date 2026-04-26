@@ -100,6 +100,10 @@ Cross-references working memory across machines. If you use Claude Code on a lap
 
 Guided preference questionnaire that walks you through four rounds of questions — planning style, communication preferences, code conventions, and collaboration patterns. Converts your answers into concrete memory entries. You can also skip it and just use `/remember` to build memory organically.
 
+### Session history
+
+Every time `/remember` runs, it also appends a 2-3 line summary to `session-log.md` — a grep-searchable log of past sessions. Over time this becomes a lightweight session history. `/reflect` manages rotation when the log gets large.
+
 ### Nudging
 
 The CLAUDE.md snippet tells Claude to suggest the right command at the right time — `/remember` when corrections happen, `/reflect` when memory goes stale, `/distill` on new machines. It never runs anything silently; it always asks first.

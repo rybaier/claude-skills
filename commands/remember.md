@@ -60,3 +60,24 @@ Reflect on the current session and identify learnings worth preserving in workin
      increment N by 1. If the comment doesn't exist, add it at the end of the
      Working Memory section (or end of file):
      `<!-- remember-count-since-reflect: 1 -->`
+
+8. **Session log entry**: Prepend a summary to `~/.claude/working-memory/session-log.md`.
+   If the file doesn't exist, create it with the header from the template.
+
+   Format (prepend after the `<!-- Entries will be prepended below this line -->` marker):
+   ```
+   ## YYYY-MM-DD | {project} | {one-line summary of session activity}
+
+   - Key learning or decision 1
+   - Key learning or decision 2
+   ```
+
+   - Date: today's date (YYYY-MM-DD)
+   - Project: extracted from `git remote get-url origin` as `{owner}/{repo}`,
+     or "general" if not in a git repo
+   - Summary: one-line description of the session's main activity
+   - Details: 2-3 bullet points of key learnings or decisions (derived from the
+     entries just written, or from session activity if no entries were written)
+   - Increment `<!-- entry-count: N -->` at the top of the file by 1
+   - This step does not require separate approval — it's a factual log entry,
+     not an opinionated memory entry
