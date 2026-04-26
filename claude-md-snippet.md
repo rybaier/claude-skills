@@ -14,6 +14,14 @@ At the start of sessions involving significant work (not quick one-off questions
 - `~/.claude/working-memory/anti-patterns.md` — Mistakes to avoid (if it exists)
 - `~/.claude/working-memory/team/team-patterns.md` — Team conventions (if it exists)
 
+### Project Overlay
+If the current directory is a git repo, check for a project-specific memory overlay:
+1. Run `git remote get-url origin 2>/dev/null` to get the remote URL
+2. Extract `{owner}/{repo}` from the URL (strip `.git` suffix, protocol, and host)
+3. Check if `~/.claude/working-memory/projects/{owner}--{repo}/` exists
+4. If it exists, read all `.md` files in that directory alongside global memory
+5. Project patterns supplement global memory; project-specific entries take precedence on conflicts
+
 ### Proactive Update Protocol
 When any of the following happen during a session, suggest updating working memory
 (ask before writing — never silently update):
@@ -29,6 +37,7 @@ Updates go to the appropriate file:
 - Tool/environment preference -> `tools.md`
 - Mistake/anti-pattern -> `anti-patterns.md`
 - Team convention -> `team/team-patterns.md`
+- Project-specific pattern -> `projects/{owner}--{repo}/patterns.md`
 
 ### Session Nudging
 At the end of meaningful sessions (not quick one-off questions), evaluate whether to
@@ -65,9 +74,9 @@ use `/remember` to build memory organically." Only suggest this once per session
 ### Separation Rules
 - Working memory captures HOW the user works — patterns, preferences, style
 - Team conventions (branch naming, PR requirements, deploy process) go in `team/team-patterns.md`
-- NEVER store project-specific details (endpoints, secrets, architecture, team info)
-- Project details belong in project-level memories only
-- When unsure whether something is a pattern vs a project detail, ask the user
+- Project-specific details (architecture, conventions, gotchas) go in project overlays
+  at `projects/{owner}--{repo}/` — /remember routes them there instead of filtering them out
+- When unsure whether something is a global pattern vs project-specific, ask the user
 
 <!-- remember-count-since-reflect: 0 -->
 <!-- END claude-imprint -->

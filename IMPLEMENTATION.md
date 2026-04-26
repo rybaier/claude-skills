@@ -29,13 +29,13 @@
 - [x] Update README.md
 
 ## Phase 2c: Project Overlays (F5)
-- [ ] Create working-memory/templates/projects/patterns.md
-- [ ] Update commands/remember.md — project category + detection
-- [ ] Update commands/reflect.md — project overlay auditing
-- [ ] Update claude-md-snippet.md — project overlay detection + loading
-- [ ] Update install.sh — projects directory
-- [ ] Update uninstall.sh — projects cleanup
-- [ ] Update README.md
+- [x] Create working-memory/templates/projects/patterns.md
+- [x] Update commands/remember.md — project category + detection
+- [x] Update commands/reflect.md — project overlay auditing
+- [x] Update claude-md-snippet.md — project overlay detection + loading
+- [x] Update install.sh — projects directory
+- [x] Update uninstall.sh — projects cleanup
+- [x] Update README.md
 
 ## Phase 3a: Session Recall (F7)
 - [ ] Create working-memory/templates/session-log.md

@@ -9,6 +9,8 @@ Review working memory files and provide a health check on the accumulated learni
    - `~/.claude/working-memory/tools.md` (if it exists)
    - `~/.claude/working-memory/anti-patterns.md` (if it exists)
    - `~/.claude/working-memory/team/team-patterns.md` (if it exists)
+   - All `.md` files in `~/.claude/working-memory/projects/{current-project}/` (if in a
+     git repo — detect project using `git remote get-url origin`, sanitize to `{owner}--{repo}`)
 
 2. **Generate a summary** of what Claude has learned about the user. Write this as a
    short narrative (not just repeating the bullets back). Frame it as: "Here's what I've
@@ -43,8 +45,9 @@ Review working memory files and provide a health check on the accumulated learni
     low but many sessions have passed, suggest the user may be under-using /remember.
 
 6. **Upward extraction check**:
-   Scan project-level memory files (if accessible) for patterns that appear across multiple
-   projects. Suggest promoting these to global working memory.
+   Scan project overlay files (in `~/.claude/working-memory/projects/`) for patterns that
+   appear across 2+ projects. Suggest promoting these to global working memory. Also scan
+   project-level Claude memory files (if accessible) for cross-project patterns.
 
 7. **Present findings** in this format:
 
