@@ -45,7 +45,9 @@ Claude Code loads `.md` files from `~/.claude/commands/` as slash commands, and 
 │   ├── collaboration-patterns.md  # How you and Claude work together
 │   ├── boundaries.md            # What stays separate
 │   ├── tools.md                 # Preferred tools and environment
-│   └── anti-patterns.md         # Mistakes to avoid
+│   ├── anti-patterns.md         # Mistakes to avoid
+│   └── team/
+│       └── team-patterns.md     # Team conventions (shared)
 └── CLAUDE.md                    # Loads working memory + session nudging
 ```
 
@@ -138,6 +140,7 @@ Two developers using the same commands end up with completely different memory f
 | `boundaries.md` | Separation rules and guardrails | "Never store API keys in working memory" |
 | `tools.md` | Tool preferences and environment | "Prefer ripgrep over grep, fd over find" |
 | `anti-patterns.md` | Mistakes and footguns to avoid | "macOS sed requires -i ''" |
+| `team/team-patterns.md` | Team-wide conventions (shared) | "All PRs require one approval" |
 
 ## Tracking and metrics
 

@@ -12,6 +12,7 @@ At the start of sessions involving significant work (not quick one-off questions
 - `~/.claude/working-memory/boundaries.md` — Work vs personal separation rules
 - `~/.claude/working-memory/tools.md` — Preferred tools and environment (if it exists)
 - `~/.claude/working-memory/anti-patterns.md` — Mistakes to avoid (if it exists)
+- `~/.claude/working-memory/team/team-patterns.md` — Team conventions (if it exists)
 
 ### Proactive Update Protocol
 When any of the following happen during a session, suggest updating working memory
@@ -27,6 +28,7 @@ Updates go to the appropriate file:
 - Separation rule -> `boundaries.md`
 - Tool/environment preference -> `tools.md`
 - Mistake/anti-pattern -> `anti-patterns.md`
+- Team convention -> `team/team-patterns.md`
 
 ### Session Nudging
 At the end of meaningful sessions (not quick one-off questions), evaluate whether to
@@ -62,6 +64,7 @@ use `/remember` to build memory organically." Only suggest this once per session
 
 ### Separation Rules
 - Working memory captures HOW the user works — patterns, preferences, style
+- Team conventions (branch naming, PR requirements, deploy process) go in `team/team-patterns.md`
 - NEVER store project-specific details (endpoints, secrets, architecture, team info)
 - Project details belong in project-level memories only
 - When unsure whether something is a pattern vs a project detail, ask the user

@@ -49,11 +49,21 @@ if [ -d "$CLAUDE_DIR/working-memory" ]; then
   for f in "$CLAUDE_DIR/working-memory/"*.md; do
     [ -f "$f" ] && echo "    $(basename "$f")"
   done
+  if [ -d "$CLAUDE_DIR/working-memory/team" ]; then
+    echo "  Team patterns:"
+    for f in "$CLAUDE_DIR/working-memory/team/"*.md; do
+      [ -f "$f" ] && echo "    team/$(basename "$f")"
+    done
+  fi
   echo ""
   read -p "Delete working memory files? This cannot be undone. (y/n) " -n 1 -r
   echo ""
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     rm -f "$CLAUDE_DIR/working-memory/"*.md
+    if [ -d "$CLAUDE_DIR/working-memory/team" ]; then
+      rm -f "$CLAUDE_DIR/working-memory/team/"*.md
+      rmdir "$CLAUDE_DIR/working-memory/team" 2>/dev/null || true
+    fi
     rmdir "$CLAUDE_DIR/working-memory" 2>/dev/null || true
     echo "  Deleted working memory files"
   else

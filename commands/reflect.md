@@ -8,6 +8,7 @@ Review working memory files and provide a health check on the accumulated learni
    - `~/.claude/working-memory/boundaries.md`
    - `~/.claude/working-memory/tools.md` (if it exists)
    - `~/.claude/working-memory/anti-patterns.md` (if it exists)
+   - `~/.claude/working-memory/team/team-patterns.md` (if it exists)
 
 2. **Generate a summary** of what Claude has learned about the user. Write this as a
    short narrative (not just repeating the bullets back). Frame it as: "Here's what I've

@@ -30,6 +30,19 @@ for tpl in "$SCRIPT_DIR/working-memory/templates/"*.md; do
   fi
 done
 
+# Set up team memory from templates (copy, not symlink)
+mkdir -p "$CLAUDE_DIR/working-memory/team"
+for tpl in "$SCRIPT_DIR/working-memory/templates/team/"*.md; do
+  [ -f "$tpl" ] || continue
+  name="$(basename "$tpl")"
+  if [ -e "$CLAUDE_DIR/working-memory/team/$name" ]; then
+    echo "  Skipping working-memory/team/$name (already exists)"
+  else
+    cp "$tpl" "$CLAUDE_DIR/working-memory/team/$name"
+    echo "  Created working-memory/team/$name from template"
+  fi
+done
+
 # Seed from universal patterns if imprinted-memories exists
 if [ -d "$HOME/.claude/imprinted-memories/universal" ]; then
   echo ""
@@ -49,6 +62,26 @@ if [ -d "$HOME/.claude/imprinted-memories/universal" ]; then
     done
   else
     echo "  Skipped. Run /distill later to merge universal patterns."
+  fi
+fi
+
+# Seed from team patterns if imprinted-memories has them
+if [ -d "$HOME/.claude/imprinted-memories/team" ]; then
+  echo ""
+  echo "Found team patterns from imprinted-memories."
+  read -p "Seed team memory from shared patterns? (y/n) " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    for tfile in "$HOME/.claude/imprinted-memories/team/"*.md; do
+      [ -f "$tfile" ] || continue
+      name="$(basename "$tfile")"
+      if [ -e "$CLAUDE_DIR/working-memory/team/$name" ]; then
+        echo "  Note: team/$name already exists — run /distill to merge"
+      else
+        cp "$tfile" "$CLAUDE_DIR/working-memory/team/$name"
+        echo "  Seeded team/$name from shared patterns"
+      fi
+    done
   fi
 fi
 

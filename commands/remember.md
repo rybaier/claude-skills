@@ -11,6 +11,10 @@ Reflect on the current session and identify learnings worth preserving in workin
    - **boundary**: A separation rule or context concern -> `boundaries.md`
    - **tools**: A tool preference, CLI flag, editor setting, or environment preference -> `tools.md`
    - **anti-pattern**: A mistake that happened, a footgun, a pattern to avoid -> `anti-patterns.md`
+   - **team**: A team-wide convention or standard (not personal preference) -> `team/team-patterns.md`
+
+   If a pattern could be personal or team-wide, ask: "Is this your personal preference
+   or a team convention?"
 
 3. Filter out anything project-specific (endpoints, architecture details, sprint numbers).
    Only capture transferable patterns.
@@ -26,9 +30,10 @@ Reflect on the current session and identify learnings worth preserving in workin
    Keep entries concise — one to two lines each. If an existing entry covers the
    same ground, update it rather than adding a duplicate.
 
-   If a learning is categorized as **tools** or **anti-pattern** but the target file
-   doesn't exist yet, create it from the template structure (with the appropriate
-   headings and metadata comments) before adding the entry.
+   If a learning is categorized as **tools**, **anti-pattern**, or **team** but the target
+   file doesn't exist yet, create it from the template structure (with the appropriate
+   headings and metadata comments) before adding the entry. For team patterns, create
+   the `~/.claude/working-memory/team/` directory if needed.
 
 7. After writing entries, update the metadata comments at the top of each file
    that received a new entry:

@@ -19,14 +19,14 @@
 - [x] Update README.md
 
 ## Phase 2b: Team Imprinting (F4)
-- [ ] Create working-memory/templates/team/team-patterns.md
-- [ ] Update commands/remember.md — team category
-- [ ] Update commands/reflect.md — team file auditing
-- [ ] Update commands/distill.md — team sync step
-- [ ] Update claude-md-snippet.md — team routing + reading
-- [ ] Update install.sh — team directory + seeding
-- [ ] Update uninstall.sh — team cleanup
-- [ ] Update README.md
+- [x] Create working-memory/templates/team/team-patterns.md
+- [x] Update commands/remember.md — team category
+- [x] Update commands/reflect.md — team file auditing
+- [x] Update commands/distill.md — team sync step
+- [x] Update claude-md-snippet.md — team routing + reading
+- [x] Update install.sh — team directory + seeding
+- [x] Update uninstall.sh — team cleanup
+- [x] Update README.md
 
 ## Phase 2c: Project Overlays (F5)
 - [ ] Create working-memory/templates/projects/patterns.md
