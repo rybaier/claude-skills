@@ -2,11 +2,11 @@
 
 <!-- stats: corrections=0, since=YYYY-MM-DD -->
 <!-- last-reviewed: YYYY-MM-DD -->
-<!-- last-remember: YYYY-MM-DD -->
+<!-- last-imprint: YYYY-MM-DD -->
 
-Observations about what works and what doesn't in pairing with Claude. Updated via /remember.
+Observations about what works and what doesn't in pairing with Claude. Updated via /imprint.
 
-<!-- /remember will replace these examples with your actual patterns over time -->
+<!-- /imprint will replace these examples with your actual patterns over time -->
 
 ## What Works
 - <!-- e.g., Checkpoint-driven: stop and present findings at key junctures before proceeding -->

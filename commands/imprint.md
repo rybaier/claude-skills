@@ -54,12 +54,12 @@ Reflect on the current session and identify learnings worth preserving in workin
    - If `since=YYYY-MM-DD` (literal placeholder), replace with today's date
    - If the stats comment doesn't exist, add it after the first heading:
      `<!-- stats: corrections=1, since={today} -->`
-   - Update `<!-- last-remember: YYYY-MM-DD -->` to today's date in each modified file
+   - Update `<!-- last-imprint: YYYY-MM-DD -->` to today's date in each modified file
      (add it after the stats comment if missing)
-   - In `~/.claude/CLAUDE.md`, find `<!-- remember-count-since-reflect: N -->` and
+   - In `~/.claude/CLAUDE.md`, find `<!-- imprint-count-since-reflect: N -->` and
      increment N by 1. If the comment doesn't exist, add it at the end of the
      Working Memory section (or end of file):
-     `<!-- remember-count-since-reflect: 1 -->`
+     `<!-- imprint-count-since-reflect: 1 -->`
 
 8. **Session log entry**: Prepend a summary to `~/.claude/working-memory/session-log.md`.
    If the file doesn't exist, create it with the header from the template.

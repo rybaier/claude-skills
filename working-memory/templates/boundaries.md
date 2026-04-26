@@ -2,7 +2,7 @@
 
 <!-- stats: corrections=0, since=YYYY-MM-DD -->
 <!-- last-reviewed: YYYY-MM-DD -->
-<!-- last-remember: YYYY-MM-DD -->
+<!-- last-imprint: YYYY-MM-DD -->
 
 Rules about what belongs where — keeping working memory clean and scoped.
 
@@ -12,6 +12,6 @@ Rules about what belongs where — keeping working memory clean and scoped.
 - Project details belong in project-level memories only
 - When unsure whether something is a pattern vs a project detail, ask
 
-<!-- /remember will add your specific boundary rules below over time -->
+<!-- /imprint will add your specific boundary rules below over time -->
 <!-- e.g., Work project details stay in work project memories — never mix with personal projects -->
 <!-- e.g., Never store API keys, tokens, or credentials in working memory -->

@@ -50,13 +50,13 @@ fi
 
 # Check for new tracking features
 CLAUDE_MD="$CLAUDE_DIR/CLAUDE.md"
-if [ -f "$CLAUDE_MD" ] && ! grep -q "remember-count-since-reflect" "$CLAUDE_MD" 2>/dev/null; then
+if [ -f "$CLAUDE_MD" ] && ! grep -q "imprint-count-since-reflect" "$CLAUDE_MD" 2>/dev/null; then
   echo ""
-  echo "  New: session nudging now tracks /remember runs."
+  echo "  New: session nudging now tracks /imprint runs."
   echo "  Add this to your CLAUDE.md (in the Working Memory section):"
-  echo "    <!-- remember-count-since-reflect: 0 -->"
+  echo "    <!-- imprint-count-since-reflect: 0 -->"
   echo ""
-  echo "  /remember and /reflect will manage it automatically."
+  echo "  /imprint and /reflect will manage it automatically."
 fi
 
 # Never touch existing working memory files — those are personal data

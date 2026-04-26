@@ -19,9 +19,9 @@ Review working memory files and provide a health check on the accumulated learni
 3. **Check freshness** using each file's metadata comments:
    - `<!-- last-reviewed: YYYY-MM-DD -->` — flag if older than 7 days or still a
      `YYYY-MM-DD` placeholder (meaning never reviewed)
-   - `<!-- last-remember: YYYY-MM-DD -->` — note when the last learning was captured
-   - `<!-- remember-count-since-reflect: N -->` in `~/.claude/CLAUDE.md` — flag if N >= 5
-     (meaning 5+ /remember runs since last /reflect)
+   - `<!-- last-imprint: YYYY-MM-DD -->` — note when the last learning was captured
+   - `<!-- imprint-count-since-reflect: N -->` in `~/.claude/CLAUDE.md` — flag if N >= 5
+     (meaning 5+ /imprint runs since last /reflect)
 
 4. **Detect issues** across all files:
    - **Stale entries**: Patterns that haven't been reinforced recently or that contradict
@@ -62,7 +62,7 @@ Review working memory files and provide a health check on the accumulated learni
       Compare correction counts against violations found. If a file has high
       corrections but entries keep getting violated, note that the file may need
       a rewrite pass rather than incremental additions. If corrections are low
-      but many sessions have passed, suggest the user may be under-using /remember.
+      but many sessions have passed, suggest the user may be under-using /imprint.
 
    Present scores in the Health section as a table:
    | File | Entries | Followed | Violated | N/A | Score |
@@ -94,8 +94,8 @@ Review working memory files and provide a health check on the accumulated learni
    - **Corrections captured**: N total (breakdown per file from `<!-- stats: -->` comments)
    - **Tracking since**: earliest `since` date across files, or "not yet tracked"
    - **Last reviewed**: (date per file, or "never")
-   - **Last remembered**: (date per file from `<!-- last-remember: -->`)
-   - **Remember runs since last reflect**: N (from `<!-- remember-count-since-reflect: -->`)
+   - **Last imprinted**: (date per file from `<!-- last-imprint: -->`)
+   - **Imprint runs since last reflect**: N (from `<!-- imprint-count-since-reflect: -->`)
    - **Session log entries**: N (from `<!-- entry-count: -->` in session-log.md, or "no log")
    - **Freshness**: (ok / stale / needs attention)
 
@@ -112,4 +112,4 @@ Review working memory files and provide a health check on the accumulated learni
 9. After approval, apply the changes and update the `<!-- last-reviewed: YYYY-MM-DD -->`
    comment at the top of each reviewed file to today's date.
 
-9b. Reset `<!-- remember-count-since-reflect: N -->` to 0 in `~/.claude/CLAUDE.md`.
+9b. Reset `<!-- imprint-count-since-reflect: N -->` to 0 in `~/.claude/CLAUDE.md`.

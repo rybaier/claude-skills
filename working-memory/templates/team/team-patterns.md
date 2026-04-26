@@ -2,12 +2,12 @@
 
 <!-- stats: corrections=0, since=YYYY-MM-DD -->
 <!-- last-reviewed: YYYY-MM-DD -->
-<!-- last-remember: YYYY-MM-DD -->
+<!-- last-imprint: YYYY-MM-DD -->
 
 Shared conventions and standards. These are team-wide, not personal preferences.
-Updated via /remember (team category) or direct editing.
+Updated via /imprint (team category) or direct editing.
 
-<!-- /remember will replace these examples with your team's actual conventions over time -->
+<!-- /imprint will replace these examples with your team's actual conventions over time -->
 
 ## Code Standards
 - <!-- e.g., All PRs require at least one approval before merge -->

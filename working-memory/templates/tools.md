@@ -2,8 +2,8 @@
 
 <!-- stats: corrections=0, since=YYYY-MM-DD -->
 <!-- last-reviewed: YYYY-MM-DD -->
-<!-- last-remember: YYYY-MM-DD -->
-<!-- /remember will replace these examples with your actual preferences over time -->
+<!-- last-imprint: YYYY-MM-DD -->
+<!-- /imprint will replace these examples with your actual preferences over time -->
 
 ## Editor & IDE
 - <!-- e.g., VS Code with vim keybindings, always format on save -->

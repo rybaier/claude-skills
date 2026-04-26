@@ -2,8 +2,8 @@
 
 <!-- stats: corrections=0, since=YYYY-MM-DD -->
 <!-- last-reviewed: YYYY-MM-DD -->
-<!-- last-remember: YYYY-MM-DD -->
-<!-- /remember will replace these examples with your actual patterns over time -->
+<!-- last-imprint: YYYY-MM-DD -->
+<!-- /imprint will replace these examples with your actual patterns over time -->
 
 ## Planning & Direction
 - <!-- e.g., Always present 2-3 options with trade-offs before committing to an approach -->

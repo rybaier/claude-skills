@@ -6,7 +6,7 @@
 - [x] Add metadata comments to boundaries.md template
 - [x] Create tools.md template
 - [x] Create anti-patterns.md template
-- [x] Update commands/remember.md — new categories + metadata tracking
+- [x] Update commands/imprint.md — new categories + metadata tracking
 - [x] Update commands/reflect.md — metrics reporting + freshness checks
 - [x] Update commands/distill.md — file list reference
 - [x] Update claude-md-snippet.md — nudging + Required Reading + routing
@@ -20,7 +20,7 @@
 
 ## Phase 2b: Team Imprinting (F4)
 - [x] Create working-memory/templates/team/team-patterns.md
-- [x] Update commands/remember.md — team category
+- [x] Update commands/imprint.md — team category
 - [x] Update commands/reflect.md — team file auditing
 - [x] Update commands/distill.md — team sync step
 - [x] Update claude-md-snippet.md — team routing + reading
@@ -30,7 +30,7 @@
 
 ## Phase 2c: Project Overlays (F5)
 - [x] Create working-memory/templates/projects/patterns.md
-- [x] Update commands/remember.md — project category + detection
+- [x] Update commands/imprint.md — project category + detection
 - [x] Update commands/reflect.md — project overlay auditing
 - [x] Update claude-md-snippet.md — project overlay detection + loading
 - [x] Update install.sh — projects directory
@@ -39,7 +39,7 @@
 
 ## Phase 3a: Session Recall (F7)
 - [x] Create working-memory/templates/session-log.md
-- [x] Update commands/remember.md — session log entry
+- [x] Update commands/imprint.md — session log entry
 - [x] Update commands/reflect.md — session log maintenance
 - [x] Update claude-md-snippet.md — session log reading
 - [x] Update README.md

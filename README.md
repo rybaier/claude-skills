@@ -37,7 +37,7 @@ Claude Code loads `.md` files from `~/.claude/commands/` as slash commands, and 
 ```
 ~/.claude/
 ├── commands/
-│   ├── remember.md      # /remember command
+│   ├── imprint.md       # /imprint command
 │   ├── reflect.md       # /reflect command
 │   └── distill.md       # /distill command
 ├── working-memory/
@@ -49,7 +49,7 @@ Claude Code loads `.md` files from `~/.claude/commands/` as slash commands, and 
 │   ├── team/
 │   │   └── team-patterns.md     # Team conventions (shared)
 │   └── projects/
-│       └── {owner}--{repo}/     # Per-project overlays (created by /remember)
+│       └── {owner}--{repo}/     # Per-project overlays (created by /imprint)
 │           └── patterns.md
 └── CLAUDE.md                    # Loads working memory + session nudging
 ```
@@ -73,7 +73,7 @@ This does four things:
 
 ## Commands
 
-### Start here: `/remember`
+### Start here: `/imprint`
 
 Run at the end of a session (or anytime). Claude reviews what happened — corrections you made, preferences you expressed, patterns that emerged — and proposes entries for the right memory file. It filters out anything project-specific and only keeps transferable patterns. You approve before anything gets written.
 
@@ -100,15 +100,15 @@ Cross-references working memory across machines. If you use Claude Code on a lap
 
 ### First time? `/teach`
 
-Guided preference questionnaire that walks you through four rounds of questions — planning style, communication preferences, code conventions, and collaboration patterns. Converts your answers into concrete memory entries. You can also skip it and just use `/remember` to build memory organically.
+Guided preference questionnaire that walks you through four rounds of questions — planning style, communication preferences, code conventions, and collaboration patterns. Converts your answers into concrete memory entries. You can also skip it and just use `/imprint` to build memory organically.
 
 ### Session history
 
-Every time `/remember` runs, it also appends a 2-3 line summary to `session-log.md` — a grep-searchable log of past sessions. Over time this becomes a lightweight session history. `/reflect` manages rotation when the log gets large.
+Every time `/imprint` runs, it also appends a 2-3 line summary to `session-log.md` — a grep-searchable log of past sessions. Over time this becomes a lightweight session history. `/reflect` manages rotation when the log gets large.
 
 ### Nudging
 
-The CLAUDE.md snippet tells Claude to suggest the right command at the right time — `/remember` when corrections happen, `/reflect` when memory goes stale, `/distill` on new machines. It never runs anything silently; it always asks first.
+The CLAUDE.md snippet tells Claude to suggest the right command at the right time — `/imprint` when corrections happen, `/reflect` when memory goes stale, `/distill` on new machines. It never runs anything silently; it always asks first.
 
 ## What memory looks like
 
@@ -159,12 +159,12 @@ Each memory file includes metadata comments that track effectiveness:
 ```markdown
 <!-- stats: corrections=12, since=2026-03-01 -->
 <!-- last-reviewed: 2026-04-15 -->
-<!-- last-remember: 2026-04-20 -->
+<!-- last-imprint: 2026-04-20 -->
 ```
 
-- **corrections**: How many learnings `/remember` has captured in this file
+- **corrections**: How many learnings `/imprint` has captured in this file
 - **last-reviewed**: When `/reflect` last audited this file
-- **last-remember**: When `/remember` last wrote to this file
+- **last-imprint**: When `/imprint` last wrote to this file
 
 `/reflect` uses these to report on memory health and flag files that need attention.
 
@@ -203,7 +203,7 @@ No. CLAUDE.md is for project-specific rules and instructions that apply to every
 Yes. They're plain markdown. Edit them anytime — the commands are just a convenience for discovering and maintaining entries.
 
 **What if Claude proposes a bad memory entry?**
-You approve everything before it's written. `/remember` and `/reflect` always present proposals and wait for your sign-off.
+You approve everything before it's written. `/imprint` and `/reflect` always present proposals and wait for your sign-off.
 
 **Does this work with Claude on the web?**
 No. claude-imprint requires the Claude Code CLI, which supports custom slash commands and CLAUDE.md injection.

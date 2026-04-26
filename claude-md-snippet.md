@@ -42,9 +42,9 @@ Updates go to the appropriate file:
 
 ### Session Nudging
 At the end of meaningful sessions (not quick one-off questions), evaluate whether to
-suggest `/remember` or `/reflect`:
+suggest `/imprint` or `/reflect`:
 
-**Suggest `/remember`** when any of these occurred during the session:
+**Suggest `/imprint`** when any of these occurred during the session:
 - The user corrected an assumption or approach
 - A new workflow preference emerged
 - A collaboration pattern proved effective or ineffective
@@ -54,8 +54,8 @@ suggest `/remember` or `/reflect`:
 **Suggest `/reflect`** when:
 - Any working memory file has a `<!-- last-reviewed: -->` date older than 7 days
   (or still a `YYYY-MM-DD` placeholder, meaning it has never been reviewed)
-- The `<!-- remember-count-since-reflect: N -->` comment shows N >= 5
-  (meaning 5+ /remember runs since the last /reflect)
+- The `<!-- imprint-count-since-reflect: N -->` comment shows N >= 5
+  (meaning 5+ /imprint runs since the last /reflect)
 - Claude violated a working memory entry during the current session
   (a pattern was in memory but Claude didn't follow it)
 - The user asks about what Claude has learned or how memory works
@@ -72,14 +72,14 @@ Never run any command silently. Always ask the user first.
 If `~/.claude/working-memory/profile.md` has no `<!-- onboarding-complete: -->` comment
 and contains only template placeholders (lines starting with `<!-- e.g.,`), suggest:
 "Want to run `/teach` to set up your preferences quickly? Or just start working and
-use `/remember` to build memory organically." Only suggest this once per session.
+use `/imprint` to build memory organically." Only suggest this once per session.
 
 ### Separation Rules
 - Working memory captures HOW the user works — patterns, preferences, style
 - Team conventions (branch naming, PR requirements, deploy process) go in `team/team-patterns.md`
 - Project-specific details (architecture, conventions, gotchas) go in project overlays
-  at `projects/{owner}--{repo}/` — /remember routes them there instead of filtering them out
+  at `projects/{owner}--{repo}/` — /imprint routes them there instead of filtering them out
 - When unsure whether something is a global pattern vs project-specific, ask the user
 
-<!-- remember-count-since-reflect: 0 -->
+<!-- imprint-count-since-reflect: 0 -->
 <!-- END claude-imprint -->

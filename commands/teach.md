@@ -62,7 +62,7 @@ After each round (or all rounds if the user prefers):
    specific enough to change Claude's behavior (not "write clean code" but "keep
    functions under 30 lines, extract early if growing")
 
-2. Present in standard /remember format:
+2. Present in standard /imprint format:
    **File**: `~/.claude/working-memory/<file>.md`
    **Section**: <which section>
    **Entry**: <concise, actionable entry — 1-2 lines>

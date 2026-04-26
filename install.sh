@@ -139,7 +139,7 @@ if [ "$TEAM_INSTALL" = true ]; then
   echo "Team patterns are in ~/.claude/working-memory/team/"
 fi
 echo ""
-echo "Run /remember at the end of sessions to build up your profile."
+echo "Run /imprint at the end of sessions to build up your profile."
 echo "Run /reflect periodically to keep your memory fresh and accurate."
 echo "Run /distill to sync working memory across machines."
 if [ "$TEAM_INSTALL" = true ]; then
