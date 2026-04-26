@@ -92,6 +92,8 @@ Apply this entry? (y/n)
 
 Periodic health check on your working memory. Claude reads everything it's learned about you, summarizes it as a narrative, and audits for problems — stale entries, contradictions, redundancy, entries too vague to actually change behavior. It proposes sharper rewrites and flags entries that didn't prevent mistakes they should have.
 
+Includes an effectiveness score: for each memory file, `/reflect` checks how many entries Claude followed vs violated in the current session. Entries that keep getting violated across sessions are flagged for rewriting — the current wording isn't working.
+
 ### When you use multiple machines: `/distill`
 
 Cross-references working memory across machines. If you use Claude Code on a laptop and a desktop, each builds memory independently. Distill snapshots your local memory to a private GitHub repo, pulls from your other machines, and promotes patterns that show up everywhere. It seeds new machines with your evolved patterns. Requires [`gh` CLI](https://cli.github.com/) authenticated with GitHub.

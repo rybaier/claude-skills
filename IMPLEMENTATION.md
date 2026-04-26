@@ -45,6 +45,6 @@
 - [x] Update README.md
 
 ## Phase 3b: Enforcement Scoring (F8)
-- [ ] Update commands/reflect.md — effectiveness scoring system
-- [ ] Update claude-md-snippet.md — violation nudge
-- [ ] Update README.md
+- [x] Update commands/reflect.md — effectiveness scoring system
+- [x] Update claude-md-snippet.md — violation nudge
+- [x] Update README.md

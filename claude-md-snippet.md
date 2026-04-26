@@ -56,6 +56,8 @@ suggest `/remember` or `/reflect`:
   (or still a `YYYY-MM-DD` placeholder, meaning it has never been reviewed)
 - The `<!-- remember-count-since-reflect: N -->` comment shows N >= 5
   (meaning 5+ /remember runs since the last /reflect)
+- Claude violated a working memory entry during the current session
+  (a pattern was in memory but Claude didn't follow it)
 - The user asks about what Claude has learned or how memory works
 
 **Suggest `/distill`** when:

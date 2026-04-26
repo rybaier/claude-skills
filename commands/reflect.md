@@ -33,16 +33,44 @@ Review working memory files and provide a health check on the accumulated learni
      propose sharpening or removing
    - **Gaps**: Sections with few or no entries that could benefit from attention
 
-5. **Effectiveness check** (if in an active session with history):
-   Review the current session for moments where Claude repeated a mistake already captured
-   in memory. If found, flag the entry as ineffective and propose a rewrite that would
-   actually prevent the mistake.
+5. **Effectiveness scoring** (if in an active session with history):
 
-5b. **Effectiveness ratio** (if stats comments exist):
-    Compare correction counts against entries flagged as ineffective (step 5). If a file
-    has high corrections but entries keep getting flagged as ineffective, note that the
-    file may need a rewrite pass rather than incremental additions. If corrections are
-    low but many sessions have passed, suggest the user may be under-using /remember.
+   a. **Current session scan**: Review the current session's conversation history.
+      For each entry across all memory files, classify:
+      - **Followed**: Claude's behavior was consistent with the entry
+      - **Violated**: Claude did something the entry should have prevented
+      - **N/A**: Entry wasn't relevant this session
+      Skip files where all entries are N/A.
+
+   b. **Calculate scores**: For each file with relevant entries, compute:
+      `Score = followed / (followed + violated)` as a percentage.
+
+   c. **Violation details**: For each violated entry, explain:
+      - Which entry was violated and in which file
+      - What happened in the session that contradicted it
+      - Why the current wording didn't prevent the mistake
+      - A proposed rewrite that would be more effective
+
+   d. **Longitudinal trend** (if `~/.claude/working-memory/session-log.md` exists
+      with 5+ entries):
+      - Scan session-log.md for past entries that mention corrections
+      - Cross-reference with current memory entries
+      - Flag entries that have been corrected 2+ times in the last 10 sessions —
+        these are candidates for rewriting (the current wording isn't working)
+
+   e. **Effectiveness ratio** (if stats comments exist):
+      Compare correction counts against violations found. If a file has high
+      corrections but entries keep getting violated, note that the file may need
+      a rewrite pass rather than incremental additions. If corrections are low
+      but many sessions have passed, suggest the user may be under-using /remember.
+
+   Present scores in the Health section as a table:
+   | File | Entries | Followed | Violated | N/A | Score |
+   |------|---------|----------|----------|-----|-------|
+
+   Frame violations as questions, not assertions — the user may have intentionally
+   deviated from a pattern: "Did you mean to deviate from X, or should we sharpen
+   the entry?"
 
 6. **Session log maintenance**: If `~/.claude/working-memory/session-log.md` exists,
    check the `<!-- entry-count: N -->` comment:
