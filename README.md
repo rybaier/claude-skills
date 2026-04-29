@@ -1,6 +1,6 @@
 # claude-imprint
 
-Persistent working memory for Claude Code. Claude learns how you work and remembers it across sessions.
+In nature, imprinting is how a newborn learns its parent — not through instructions, but by watching. claude-imprint brings the same idea to Claude Code: it observes how you work, internalizes your patterns, and carries them into every future session.
 
 ## Before / After
 
@@ -28,7 +28,7 @@ Claude: I'll commit this phase by phase at each logical boundary.
          git commit -m "Remove legacy auth helpers"
 ```
 
-Every correction you make can become permanent. Instead of you writing rules, Claude observes how you work and proposes entries. Your memory evolves through use and gets maintained automatically instead of going stale — like imprinting in the animal world, where a newborn learns from its parent.
+Every correction you make can become permanent. Instead of you writing rules, Claude observes how you work and proposes entries. Your memory evolves through use and gets maintained automatically instead of going stale.
 
 ## How it works
 
