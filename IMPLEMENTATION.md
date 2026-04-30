@@ -28,14 +28,9 @@
 - [x] Update uninstall.sh — team cleanup
 - [x] Update README.md
 
-## Phase 2c: Project Overlays (F5)
-- [x] Create working-memory/templates/projects/patterns.md
-- [x] Update commands/imprint.md — project category + detection
-- [x] Update commands/reflect.md — project overlay auditing
-- [x] Update claude-md-snippet.md — project overlay detection + loading
-- [x] Update install.sh — projects directory
-- [x] Update uninstall.sh — projects cleanup
-- [x] Update README.md
+## Phase 2c: Project Overlays (F5) — REMOVED
+Superseded by Claude Code's built-in auto memory feature.
+Removed in favor of auto memory for project-specific context.
 
 ## Phase 3a: Session Recall (F7)
 - [x] Create working-memory/templates/session-log.md

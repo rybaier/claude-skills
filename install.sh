@@ -21,7 +21,6 @@ done
 
 # Set up working memory from templates (copy, not symlink — these are personal)
 mkdir -p "$CLAUDE_DIR/working-memory"
-mkdir -p "$CLAUDE_DIR/working-memory/projects"
 for tpl in "$SCRIPT_DIR/working-memory/templates/"*.md; do
   name="$(basename "$tpl")"
   if [ -e "$CLAUDE_DIR/working-memory/$name" ]; then

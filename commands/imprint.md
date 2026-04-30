@@ -12,21 +12,14 @@ Reflect on the current session and identify learnings worth preserving in workin
    - **tools**: A tool preference, CLI flag, editor setting, or environment preference -> `tools.md`
    - **anti-pattern**: A mistake that happened, a footgun, a pattern to avoid -> `anti-patterns.md`
    - **team**: A team-wide convention or standard (not personal preference) -> `team/team-patterns.md`
-   - **project**: A project-specific pattern, convention, or gotcha -> `projects/{owner}--{repo}/patterns.md`
 
    If a pattern could be personal or team-wide, ask: "Is this your personal preference
    or a team convention?"
 
-2b. **Detect the current project** (for project-specific routing):
-    - Run `git remote get-url origin 2>/dev/null` to get the remote URL
-    - Extract `{owner}/{repo}` from the URL (strip `.git` suffix, protocol, and host)
-    - Sanitize to `{owner}--{repo}` (double-dash separator) for the directory name
-    - If no remote, fall back to `basename` of the git root directory
-    - If not in a git repo, skip project routing entirely
-
 3. For each candidate learning, decide:
    - **Transferable patterns** (how you work, not what the project is) -> global memory files
-   - **Project-specific patterns** (architecture, conventions, gotchas for this repo) -> project overlay
+   - **Project-specific context** (architecture, conventions, gotchas for this repo) -> skip these;
+     Claude's built-in auto memory handles project-specific context automatically
    Only filter out truly ephemeral details (sprint numbers, temporary workarounds).
 
 4. Present the proposed updates to the user in this format:
@@ -40,12 +33,10 @@ Reflect on the current session and identify learnings worth preserving in workin
    Keep entries concise — one to two lines each. If an existing entry covers the
    same ground, update it rather than adding a duplicate.
 
-   If a learning is categorized as **tools**, **anti-pattern**, **team**, or **project** but
+   If a learning is categorized as **tools**, **anti-pattern**, or **team** but
    the target file doesn't exist yet, create it from the template structure (with the
    appropriate headings and metadata comments) before adding the entry. Create the
-   target directory if needed (`team/` or `projects/{owner}--{repo}/`). For project
-   overlays, replace `{owner}/{repo}` in the `<!-- project: -->` comment with the
-   actual project identifier.
+   target directory if needed (`team/`).
 
 7. After writing entries, update the metadata comments at the top of each file
    that received a new entry:

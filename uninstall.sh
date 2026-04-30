@@ -55,15 +55,6 @@ if [ -d "$CLAUDE_DIR/working-memory" ]; then
       [ -f "$f" ] && echo "    team/$(basename "$f")"
     done
   fi
-  if [ -d "$CLAUDE_DIR/working-memory/projects" ]; then
-    for pdir in "$CLAUDE_DIR/working-memory/projects"/*/; do
-      [ -d "$pdir" ] || continue
-      echo "  Project overlay: $(basename "$pdir")"
-      for f in "$pdir"*.md; do
-        [ -f "$f" ] && echo "    $(basename "$pdir")/$(basename "$f")"
-      done
-    done
-  fi
   echo ""
   read -p "Delete working memory files? This cannot be undone. (y/n) " -n 1 -r
   echo ""
@@ -72,14 +63,6 @@ if [ -d "$CLAUDE_DIR/working-memory" ]; then
     if [ -d "$CLAUDE_DIR/working-memory/team" ]; then
       rm -f "$CLAUDE_DIR/working-memory/team/"*.md
       rmdir "$CLAUDE_DIR/working-memory/team" 2>/dev/null || true
-    fi
-    if [ -d "$CLAUDE_DIR/working-memory/projects" ]; then
-      for pdir in "$CLAUDE_DIR/working-memory/projects"/*/; do
-        [ -d "$pdir" ] || continue
-        rm -f "$pdir"*.md
-        rmdir "$pdir" 2>/dev/null || true
-      done
-      rmdir "$CLAUDE_DIR/working-memory/projects" 2>/dev/null || true
     fi
     rmdir "$CLAUDE_DIR/working-memory" 2>/dev/null || true
     echo "  Deleted working memory files"

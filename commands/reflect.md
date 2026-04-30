@@ -9,8 +9,6 @@ Review working memory files and provide a health check on the accumulated learni
    - `~/.claude/working-memory/tools.md` (if it exists)
    - `~/.claude/working-memory/anti-patterns.md` (if it exists)
    - `~/.claude/working-memory/team/team-patterns.md` (if it exists)
-   - All `.md` files in `~/.claude/working-memory/projects/{current-project}/` (if in a
-     git repo — detect project using `git remote get-url origin`, sanitize to `{owner}--{repo}`)
 
 2. **Generate a summary** of what Claude has learned about the user. Write this as a
    short narrative (not just repeating the bullets back). Frame it as: "Here's what I've
@@ -78,11 +76,6 @@ Review working memory files and provide a health check on the accumulated learni
      `~/.claude/working-memory/session-log-archive-{YYYY}.md` (by year of entry date)
    - If N > 200, flag: "Session log needs immediate trimming — over 200 entries"
    - Report entry count in the Health section
-
-6b. **Upward extraction check**:
-   Scan project overlay files (in `~/.claude/working-memory/projects/`) for patterns that
-   appear across 2+ projects. Suggest promoting these to global working memory. Also scan
-   project-level Claude memory files (if accessible) for cross-project patterns.
 
 7. **Present findings** in this format:
 
