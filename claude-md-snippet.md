@@ -72,5 +72,11 @@ use `/imprint` to build memory organically." Only suggest this once per session.
   built-in auto memory — /imprint focuses on transferable patterns only
 - When unsure whether something is a global pattern vs project-specific, ask the user
 
+### Relationship with Auto Memory
+Working memory files are authoritative for the categories imprint covers (style, collaboration,
+boundaries, tools, anti-patterns, team conventions). Claude's built-in auto memory should not
+duplicate entries that already exist in working memory files. Auto memory handles project-specific
+context; working memory handles developer identity.
+
 <!-- imprint-count-since-reflect: 0 -->
 <!-- END claude-imprint -->

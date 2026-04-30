@@ -72,7 +72,7 @@ This does four things:
 
 ### Start here: `/imprint`
 
-Run at the end of a session (or anytime). Claude reviews what happened — corrections you made, preferences you expressed, patterns that emerged — and proposes entries for the right memory file. It filters out anything project-specific and only keeps transferable patterns. You approve before anything gets written.
+Run at the end of a session (or anytime). Claude reviews what happened — corrections you made, preferences you expressed, patterns that emerged — and proposes entries for the right memory file. Project-specific context is handled by Claude's built-in auto memory; `/imprint` focuses on transferable patterns that follow you across projects. You approve before anything gets written.
 
 Example output:
 
@@ -206,6 +206,9 @@ No. claude-imprint requires the Claude Code CLI, which supports custom slash com
 
 **What Claude plan do I need?**
 Claude Code requires a Pro, Max, or Team plan. claude-imprint works with any of these — it's just markdown files that Claude Code reads.
+
+**How does this relate to Claude's built-in memory?**
+Claude Code has a built-in auto memory that passively saves notes scoped to a single project directory. It's useful for project-specific context — architecture decisions, file conventions, debugging notes for that repo. claude-imprint is different: it's a structured identity system for patterns that follow you everywhere. Curated categories instead of freeform notes. Periodic maintenance via `/reflect` with effectiveness scoring. Cross-machine sync via `/distill`. Team convention sharing. Deliberate onboarding via `/teach`. They coexist naturally — auto memory handles "what's true about this project," imprint handles "how I work."
 
 **How do I uninstall?**
 Run `./uninstall.sh` from the repo directory. It removes command symlinks, offers to clean the CLAUDE.md snippet, and asks before touching your working memory files. Nothing is deleted without confirmation.
